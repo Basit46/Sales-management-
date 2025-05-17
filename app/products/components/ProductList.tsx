@@ -25,6 +25,17 @@ import { LuPencil, LuTrash2 } from "react-icons/lu";
 import { Badge } from "@/components/ui/badge";
 import { SelectStatus } from "./SelectStatus";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const data = [
   {
@@ -155,12 +166,67 @@ const columns: ColumnDef<(typeof data)[0]>[] = [
     ),
     cell: ({ row }) => (
       <div className="flex items-center gap-[8px] justify-center">
-        <button>
-          <LuPencil />
-        </button>
-        <button>
-          <LuTrash2 />
-        </button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <button>
+              <LuPencil />
+            </button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[500px]">
+            <DialogHeader>
+              <DialogTitle>Edit product</DialogTitle>
+              <DialogDescription>
+                Make changes to your {row.original.name}. Click save when you're
+                done.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-[16px]">
+              <div>
+                <Label id="name">Product name</Label>
+                <Input
+                  id="name"
+                  className="w-full"
+                  placeholder="Enter product name"
+                />
+              </div>
+              <div>
+                <Label id="price">Price (₦)</Label>
+                <Input
+                  id="price"
+                  type="number"
+                  className="w-full"
+                  placeholder="Enter price"
+                />
+              </div>
+
+              <div>
+                <Label id="quantity">Quantity</Label>
+                <Input
+                  id="quantity"
+                  type="number"
+                  className="w-full"
+                  placeholder="Enter quantity available"
+                />
+              </div>
+              <div>
+                <Label id="sold">Quantity sold</Label>
+                <Input
+                  id="sold"
+                  type="number"
+                  className="w-full"
+                  placeholder="Enter quantity sold"
+                />
+              </div>
+              <div>
+                <Label id="sold">Status</Label>
+                <SelectStatus className="w-full" />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="submit">Save</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     ),
   },
@@ -201,7 +267,6 @@ export default function ProductList() {
 
         <div className="flex gap-[12px]">
           <SelectStatus />
-          <Button>Add new product</Button>
         </div>
       </div>
 

@@ -1,12 +1,46 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
 import React from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const SalesTarget = () => {
   return (
     <div className="col-span-2 row-span-1 h-grid bg-sec p-3 flex flex-col">
       <div className="flex items-center justify-between">
         <p className="font-medium">Sales Target</p>
-        <Button>Update target</Button>
+
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>Update target</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Update target</DialogTitle>
+              <DialogDescription>
+                Make changes to your sales target. Click update when you're
+                done.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="">
+              <Label id="target">Sales Target</Label>
+              <Input id="target" type="number" className="w-full" />
+            </div>
+            <DialogFooter>
+              <Button type="submit">Update</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <div className="mt-[15px] space-y-[10px]">

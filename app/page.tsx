@@ -22,7 +22,7 @@ const Home = () => {
         />
         <Box
           name="Total Customer"
-          link="/customer"
+          link="/customers"
           value={"50"}
           percentUp={true}
           percent={1.3}
@@ -37,7 +37,7 @@ const Home = () => {
         />
         <Box
           name="Total Product"
-          link="/product"
+          link="/products"
           value={"10"}
           percentUp={false}
           percent={1}

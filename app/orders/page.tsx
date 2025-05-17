@@ -26,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SelectStatus } from "../products/components/SelectStatus";
 import { Input } from "@/components/ui/input";
+import AddNewOrder from "./AddNewOrder";
 
 const data = [
   {
@@ -250,7 +251,7 @@ const Orders = () => {
 
           <div className="flex gap-[12px]">
             <SelectStatus />
-            <Button>Add new order</Button>
+            <AddNewOrder />
           </div>
         </div>
 

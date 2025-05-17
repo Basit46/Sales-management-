@@ -26,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SelectStatus } from "../products/components/SelectStatus";
 import { Input } from "@/components/ui/input";
+import AddNewDriver from "./components/AddNewDriver";
 
 const data = [
   {
@@ -265,7 +266,7 @@ const CouriersTable = () => {
           </div>
 
           <div className="flex gap-[12px]">
-            <Button>Add new driver</Button>
+            <AddNewDriver />
           </div>
         </div>
 

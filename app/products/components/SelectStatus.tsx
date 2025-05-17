@@ -9,17 +9,39 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
-export function SelectStatus() {
+export function SelectStatus({
+  data,
+  className,
+}: {
+  data?: { value: string; label: string }[];
+  className?: string;
+}) {
+  const defaultData = [
+    {
+      value: "available",
+      label: "Available",
+    },
+    {
+      value: "unavailable",
+      label: "Out of stock",
+    },
+  ];
+
+  const fdata = data ? data : defaultData;
   return (
     <Select>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className={cn("w-[180px]", className)}>
         <SelectValue placeholder="Status" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="available">Available</SelectItem>
-          <SelectItem value="unavailable">Out of stock</SelectItem>
+          {fdata.map((item, i) => (
+            <SelectItem key={i} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>
